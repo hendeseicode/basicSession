@@ -2,7 +2,19 @@
 
 if(isset($_POST["username"])){
   if($_POST["username"] == $user["username"] && $_POST["password"] == $user["password"]){
+
     $_SESSION["username"] = $user["username"];
+    // iki dk yani 120 sn işlem yapmazsa oturumu sonlandırmak kontrolü için
+    $_SESSION["time"] = time() + 5;
+
+    //  10 sn lik bir cookie oluştu
+    setcookie("cookie" , "user" , time() + 10);
+
+    // sonlandırmak istesem
+    // cookie amacı kullanıcı taraflı veri tutmak
+    // bağlantı kesilse de cookie browserda kalır
+    // setcookie("cookie" , "user" , time() - 10);
+
     require "admin.php";
     exit;
   }else{
