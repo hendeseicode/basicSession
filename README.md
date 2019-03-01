@@ -1,0 +1,1 @@
+# Temel oturum yönetimi
